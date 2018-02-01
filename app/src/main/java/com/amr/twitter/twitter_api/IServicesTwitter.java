@@ -1,8 +1,4 @@
-package com.amr.twitter;
-
-import com.twitter.sdk.android.core.models.User;
-
-import java.util.ArrayList;
+package com.amr.twitter.twitter_api;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

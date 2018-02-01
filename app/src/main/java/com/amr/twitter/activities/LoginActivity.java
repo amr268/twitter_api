@@ -1,9 +1,11 @@
-package com.amr.twitter;
+package com.amr.twitter.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
+import com.amr.twitter.R;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Twitter;
@@ -13,7 +15,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     TwitterLoginButton loginButton;
 
@@ -23,9 +25,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Twitter.initialize(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        startActivity(new Intent(MainActivity.this, HomeActivity.class));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
         loginButton = (TwitterLoginButton) findViewById(R.id.login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 TwitterAuthToken authToken = session.getAuthToken();
                 String token = authToken.token;
                 String secret = authToken.secret;
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
 
             @Override

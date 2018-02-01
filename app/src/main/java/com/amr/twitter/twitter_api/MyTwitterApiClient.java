@@ -1,4 +1,4 @@
-package com.amr.twitter;
+package com.amr.twitter.twitter_api;
 
 import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterSession;
