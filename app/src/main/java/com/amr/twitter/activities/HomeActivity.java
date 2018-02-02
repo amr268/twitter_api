@@ -1,7 +1,7 @@
 package com.amr.twitter.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -9,16 +9,12 @@ import android.util.Log;
 
 import com.amr.twitter.R;
 import com.amr.twitter.adapters.FollowersAdapter;
-import com.amr.twitter.moduls.Follower;
 import com.amr.twitter.moduls.ResponseData;
 import com.amr.twitter.twitter_api.MyTwitterApiClient;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
@@ -59,11 +55,6 @@ public class HomeActivity extends AppCompatActivity {
                     User user = userResult.data;
                     String fullName = user.name;
                     long twitterID = user.getId();
-                    String userSocialProfile = user.profileImageUrl;
-                    String userEmail = user.email;
-                    String userFirstName = fullName.substring(0, fullName.lastIndexOf(" "));
-                    String userLastName = fullName.substring(fullName.lastIndexOf(" "));
-                    String userScreenName = user.screenName;
 
                     getUserFollowers(twitterID, twitterSession);
 

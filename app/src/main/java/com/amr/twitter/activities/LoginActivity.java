@@ -1,9 +1,10 @@
 package com.amr.twitter.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.amr.twitter.R;
 import com.twitter.sdk.android.core.Callback;
@@ -15,13 +16,14 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import butterknife.BindView;
+
 public class LoginActivity extends AppCompatActivity {
 
+    @BindView(R.id.login_button)
     TwitterLoginButton loginButton;
 
     @Override
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Twitter.initialize(this);
@@ -32,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
-        loginButton = (TwitterLoginButton) findViewById(R.id.login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
@@ -41,21 +42,21 @@ public class LoginActivity extends AppCompatActivity {
                 TwitterAuthToken authToken = session.getAuthToken();
                 String token = authToken.token;
                 String secret = authToken.secret;
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                //startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
 
             @Override
             public void failure(TwitterException exception) {
-                // Do something on failure
-            }
+                Log.e("error", exception.toString());            }
         });
     }
 
-    /*@Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Pass the activity result to the login button.
         loginButton.onActivityResult(requestCode, resultCode, data);
-    }*/
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+    }
 }
