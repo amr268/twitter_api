@@ -16,7 +16,9 @@ public class FollowerDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follower_details);
 
-        //if ()
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null)
+            follower = (User) bundle.getSerializable(FollowerDetailsFragment.ITEM_FOLLOWER);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
