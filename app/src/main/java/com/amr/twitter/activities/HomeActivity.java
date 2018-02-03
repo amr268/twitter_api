@@ -107,6 +107,8 @@ public class HomeActivity extends AppCompatActivity implements FollowerDetailsFr
                     Type type = new TypeToken<ResponseData>() {}.getType();
                     ResponseData responseData = gson.fromJson(sb.toString(), type);
                     ArrayList<Follower> followers = responseData.getUsers();
+                    if (mTwoPane)
+                        openFollowerDetailsFragment(followers.get(0));
                     setRecyclerView(followers, responseData.getNext_cursor());
                 } catch (IOException e) {
                     e.printStackTrace();
