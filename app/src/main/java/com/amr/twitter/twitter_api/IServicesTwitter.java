@@ -12,5 +12,5 @@ import retrofit2.http.Query;
 public interface IServicesTwitter {
 
     @GET("/1.1/followers/list.json")
-    Call<ResponseBody> getFollowers(@Query("user_id") long id);
+    Call<ResponseBody> getFollowers(@Query("user_id") long id, @Query("cursor") long cursor);
 }

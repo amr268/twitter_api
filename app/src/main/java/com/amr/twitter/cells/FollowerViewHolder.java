@@ -1,4 +1,4 @@
-package com.amr.twitter.adapters;
+package com.amr.twitter.cells;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,11 +17,11 @@ import butterknife.ButterKnife;
 public class FollowerViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.img_follower_profile)
-    ImageView imgProfile;
+    public ImageView imgProfile;
     @BindView(R.id.tv_follower_name)
-    TextView tvName;
+    public TextView tvName;
     @BindView(R.id.tv_follower_bio)
-    TextView tvBio;
+    public TextView tvBio;
 
     public FollowerViewHolder(View itemView) {
         super(itemView);

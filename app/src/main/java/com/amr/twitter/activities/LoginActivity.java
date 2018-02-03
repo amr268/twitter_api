@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        //startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override

@@ -1,6 +1,5 @@
 package com.amr.twitter.fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -96,7 +95,7 @@ public class FollowerDetailsFragment extends Fragment {
     }
 
     private void getTweets(Long id) {
-        UserTimeline userTimeline = new UserTimeline.Builder().userId(id).build();
+        UserTimeline userTimeline = new UserTimeline.Builder().userId(id).maxItemsPerRequest(10).build();
         final Callback<Tweet> actionCallback = new Callback<Tweet>() {
             @Override
             public void success(Result<Tweet> result) {
@@ -118,10 +117,11 @@ public class FollowerDetailsFragment extends Fragment {
                         .build();
         rvTweets.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvTweets.setHasFixedSize(true);
+        rvTweets.setNestedScrollingEnabled(false);
         rvTweets.setAdapter(adapter);
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        void openFollowerDetailsFragment(Follower follower);
     }
 }
