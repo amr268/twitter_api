@@ -1,12 +1,15 @@
 package com.amr.twitter.moduls;
 
 import com.google.gson.annotations.SerializedName;
+import com.twitter.sdk.android.core.models.User;
+
+import java.io.Serializable;
 
 /**
  * Created by amr on 01/02/18.
  */
 
-public class Follower {
+public class Follower implements Serializable{
 
     private long id;
 
@@ -88,6 +91,13 @@ public class Follower {
     private boolean notifications;
 
     private boolean muting;
+
+    public Follower(User user) {
+        id = user.id;
+        name = user.name;
+        description = user.description;
+        profile_image_url = user.profileImageUrl;
+    }
 
     public long getId() {
         return id;

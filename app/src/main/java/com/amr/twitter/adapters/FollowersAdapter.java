@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import com.amr.twitter.R;
 import com.amr.twitter.activities.FollowerDetailsActivity;
 import com.amr.twitter.fragments.FollowerDetailsFragment;
+import com.amr.twitter.moduls.Follower;
 import com.bumptech.glide.Glide;
-import com.twitter.sdk.android.core.models.User;
 
 import java.util.ArrayList;
 
@@ -22,14 +22,14 @@ import java.util.ArrayList;
 
 public class FollowersAdapter extends RecyclerView.Adapter<FollowerViewHolder> {
 
-    private ArrayList<User> followers;
+    private ArrayList<Follower> followers;
     private Context context;
 
     public FollowersAdapter(Context context) {
         this.context = context;
     }
 
-    public void setFollowers(ArrayList<User> followers) {
+    public void setFollowers(ArrayList<Follower> followers) {
         this.followers = followers;
     }
 
@@ -41,10 +41,10 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowerViewHolder> {
 
     @Override
     public void onBindViewHolder(FollowerViewHolder holder, int position) {
-        final User follower = followers.get(position);
-        Glide.with(holder.imgProfile.getContext()).load(follower.profileImageUrl).into(holder.imgProfile);
-        holder.tvName.setText(follower.name);
-        holder.tvBio.setText(follower.description);
+        final Follower follower = followers.get(position);
+        Glide.with(holder.imgProfile.getContext()).load(follower.getProfile_image_url()).into(holder.imgProfile);
+        holder.tvName.setText(follower.getName());
+        holder.tvBio.setText(follower.getDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

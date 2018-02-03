@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.amr.twitter.R;
 import com.amr.twitter.adapters.FollowersAdapter;
+import com.amr.twitter.moduls.Follower;
 import com.amr.twitter.moduls.ResponseData;
 import com.amr.twitter.twitter_api.MyTwitterApiClient;
 import com.google.gson.Gson;
@@ -94,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<ResponseData>() {}.getType();
                 ResponseData responseData = gson.fromJson(sb.toString(), type);
-                ArrayList<User> followers = responseData.getUsers();
+                ArrayList<Follower> followers = responseData.getUsers();
                 setRecyclerView(followers);
 
             }
@@ -106,7 +107,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void setRecyclerView(ArrayList<User> followers) {
+    private void setRecyclerView(ArrayList<Follower> followers) {
         FollowersAdapter adapter = new FollowersAdapter(this);
         adapter.setFollowers(followers);
         rvFollowers.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

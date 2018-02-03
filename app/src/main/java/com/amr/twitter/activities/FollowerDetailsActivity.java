@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.amr.twitter.R;
 import com.amr.twitter.fragments.FollowerDetailsFragment;
-import com.twitter.sdk.android.core.models.User;
+import com.amr.twitter.moduls.Follower;
 
 public class FollowerDetailsActivity extends AppCompatActivity {
 
-    private User follower;
+    private Follower follower;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +18,12 @@ public class FollowerDetailsActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
-            follower = (User) bundle.getSerializable(FollowerDetailsFragment.ITEM_FOLLOWER);
+            follower = (Follower) bundle.getSerializable(FollowerDetailsFragment.ITEM_FOLLOWER);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.item_detail_container, FollowerDetailsFragment.newInstance(follower))
+                    .add(R.id.container_follower_details, FollowerDetailsFragment.newInstance(follower))
                     .commit();
         }
     }
